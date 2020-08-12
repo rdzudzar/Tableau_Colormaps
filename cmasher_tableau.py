@@ -46,23 +46,23 @@ def create_cmasher_tableau_properties_file(cmap_range=(0.15,0.85)):
 
 		print("<?xml version='1.0'?>", file=f)
 		print("<workbook>", file=f)
-		print("<preferences>", file=f)
+		print("    <preferences>", file=f)
 
 	    # Get all the sequential colormaps in the format that is required in Tableau
 		for i, hexes in enumerate(all_sequential_maps_hex):
-			print('<color-palette name='+'"'+'{}'.format(sequential_colormap[i])+'" ' +'type="ordered-sequential">', file=f)
+			print('    <color-palette name='+'"'+'{}'.format(sequential_colormap[i])+'" ' +'type="ordered-sequential">', file=f)
 			for j, col in enumerate(hexes):
-				print('    <color>'+'{}'.format(hexes[j])+'</color>', file=f)
-			print('</color-palette>', file=f)
+				print('        <color>'+'{}'.format(hexes[j])+'</color>', file=f)
+			print('    </color-palette>', file=f)
 
 	 	# Get all the diverging colormaps in the format that is required in Tableau
 		for i, hexes in enumerate(all_diverging_maps_hex):
 			print('<color-palette name='+'"'+'{}'.format(diverging_colormap[i])+'" ' +'type="ordered-diverging">', file=f)
 			for j, col in enumerate(hexes):
-				print('    <color>'+'{}'.format(hexes[j])+'</color>', file=f)
-			print('</color-palette>', file=f)
+				print('        <color>'+'{}'.format(hexes[j])+'</color>', file=f)
+			print('    </color-palette>', file=f)
 
-		print("</preferences>", file=f)
+		print("    </preferences>", file=f)
 		print("</workbook>", file=f)
 
 if __name__ == "__main__":
